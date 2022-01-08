@@ -1,0 +1,109 @@
+.btn{
+    &,
+    &:link,
+    &:visited{
+        display: inline-block;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: none;
+        padding: 12px 40px;
+        border-radius: 100px;
+        transition: all 0.2s;
+        position: relative;
+        cursor: pointer;
+    }
+    
+    &:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+
+        &::after{
+           transform: scaleX(1.4) scaleY(1.6);
+           opacity: 0;
+        }
+    }
+
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    }
+
+    &--white{
+        background-color: #fff;
+        color: $grey;
+
+        &::after{
+            background-color: #fff;
+        }
+    }
+
+    &--green{
+        margin-top: 3rem;
+        background-color: $color-primary;
+        color: #fff;
+        font-size: 1.6rem;
+
+        &::after{
+            background-color: $color-primary;
+        }
+    }
+
+
+    &::after{/* adds a virtual elemnt ri8 afte rthe elemnt we r selecting. 
+        So the trick here is to add an element
+        that looks exactly like the button that we already have,
+        but we put it behind the button.
+        And when we hover out of the button,
+        then this hidden pseudo-element
+        amazingly goes back behind the button. always specify the content and display 
+        proprty even if its empty*/
+        content: "";
+        display: inline-block;
+        height: 100%;/*100% wrt the height of the btn*/
+        width: 100%;
+        border-radius: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;/*this puts it behind the btn*/
+        transition: all .4s;/*animation in the original state*/
+    }
+    &--animated{
+        animation: moveInBottom 0.3s ease-out .1s;
+        animation-fill-mode: backwards;/*the btn stays visible and then the animation starts and its turns trasparent. this will keep it in transp. state ri8 frm the start*/
+    }
+    
+}
+
+.btn-text{
+    &:link,
+    &:visited{
+        font-size: 1.9rem;
+        color: $color-primary;
+        flex-basis: 4%;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all .2s;
+    }
+
+    &:hover{
+        background-color: $color-primary;
+        color: #fff;
+        box-shadow: 0 1rem 2rem rgba(#000, 0.15);
+        transform:translateY(-2px) ;
+        
+        
+    }
+    
+    &:active{
+        box-shadow: 0 .5rem 1rem rgba(#000, 0.15);
+        transform: translateY(0);
+         
+    }
+}
+#btn-tours{
+    flex-grow: 1;
+    flex-basis: 100%;
+
+}
