@@ -1,2 +1,2 @@
 # Natours
-The natours project - nav bar
+The natours project minus the nav bar
